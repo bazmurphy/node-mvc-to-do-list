@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  background-color: hsl(0, 0%, 15%);
+  color: hsl(0, 0%, 85%);
+  font-family: sans-serif;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "component-one component-two"
+    "component-one component-three"
+    "component-one component-four";
+  padding: 1rem;
+}
+
+body > * {
+  border: 0.1rem solid hsl(0, 0%, 85%);
+  padding: 1.5rem;
+  background-color: hsl(0, 0%, 20%);
+}
+
+.component-one {
+  grid-area: component-one;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 1fr;
+  row-gap: 1rem;
+}
+
+.component-one ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.component-one ul li {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  justify-items: start;
+  align-items: start;
+  cursor: pointer;
+}
+
+.completed{
+  text-decoration: line-through;
+  color: hsl(0, 100%, 60%);
+}
+
+.not{
+  text-decoration: underline;
+  color: hsl(120, 100%, 45%);
+}
+
+.del {
+  color:hsl(0, 80%, 60%)
+}
+
+.component-two {
+  grid-area: component-two;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1rem;
+  align-items: center;
+}
+
+.component-three {
+  grid-area: component-three;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+}
+
+.component-three form input[type=text] {
+  padding: 0.5rem;
+}
+
+.component-three form input[type=submit] {
+  padding: 0.5rem;
+  font-weight: 800;
+}
+
+h2, h3 {
+  color: hsl(180, 100%, 40%);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.component-four {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.document {
+  display: flex;
+  flex-direction: column;
+}
+
+.document-property-value {
+  padding-left: 1rem;
+}
+.document-property {
+  color: hsl(27, 100%, 50%);
+}
+.document-value {
+  color: hsl(202, 47%, 79%);
+}

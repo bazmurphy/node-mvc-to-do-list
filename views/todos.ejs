@@ -4,26 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/todos.css">
+    <title>To Do List MVC</title>
 </head>
 <body>
-    <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-        <li class='todoItem' data-id='<%=el._id%>'>
-            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-            <span class='del'> Delete </span>
+    <div class="component-one">
+      <h2>List Of To Do Items:</h2>
+      <ul>
+        <li>
+          <span>todo:</span>
+          <span></span>
+          <span>_id:</span>
         </li>
-    <% }) %>    
-    </ul>
+      <% todos.forEach( el => { %>
+          <li class='todoItem' data-id='<%=el._id%>'>
+              <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+              <span class='del'><i class="fa fa-trash"></i> Delete To Do Item</span>
+              <span><%=el._id%></span>
+          </li>
+      <% }) %>
+      </ul>
+    </div>
 
-    <h2>Things left to do: <%= left %></h2>
+    <div class="component-two">
+      <h3>To Do Items Complete:</h3>
+      <p><%= complete %></p>
+      <h3>To Do Items Incomplete:</h3>
+      <p><%= incomplete %></p>
+    </div>
 
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
+    <div class="component-three">
+      <h3>Add A New To Do Item:</h3>
+      <form action="/todos/createTodo" method='POST'>
+          <input type="text" placeholder="Add A New To Do Item" name='todoItem'>
+          <input type="submit" value="Add">
+      </form>
+    </div>
+
+    <div class="component-four">
+      <h3>DataBase Documents:</h3>
+      <% todos.forEach( el => { %>
+        <div class="document">
+          <span>{</span>
+          <p class="document-property-value">
+            <span class="document-property">_id: </span>
+            <span class="document-value"><%= el._id %></span>
+          </p>
+          <p class="document-property-value">
+            <span class="document-property">todo: </span>
+            <span class="document-value">"<%= el.todo %>"</span>
+          </p>
+          <p class="document-property-value">
+            <span class="document-property">completed: </span>
+            <span class="document-value"><%= el.completed %></span>
+          </p>
+          <span>}</span>
+        </div>
+      <% }) %>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
